@@ -14,7 +14,7 @@ $colors: (
 
 body {
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     overflow: hidden;
     background-color: map-get($colors, dark);
     font-family: 'Poppins', sans-serif;
@@ -22,7 +22,7 @@ body {
 }
 
 #container {
-    width: 80vw;
+    max-width: 80vw;
     margin: 0px auto;
     text-align: center;
 }
@@ -94,7 +94,6 @@ h1 {
 #buttons-section {
     margin: 130px auto 0;
     display: flex;
-    flex-wrap: wrap;
     width: 50%;
     justify-content: space-between;
 
@@ -136,4 +135,41 @@ h1 {
 
     }
 
+}
+
+/* Media Queries */
+@media screen and (max-width: 990px) {
+    body {
+        overflow-y: scroll;
+    }
+    #container {
+        width: 90vw;
+    }
+    .progress-bar {
+        width: 100% !important;
+        &::after{
+            display: none;
+        }
+        &::before {
+            display: none;
+        }
+    }
+    #timer-section {
+        margin-top: 70px;
+        font-size: 130px;
+    }
+    #buttons-section {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 70px;
+        margin-right: 0;
+        margin-left: 0;
+        width: 100%;
+        
+        button {
+            width: 100% !important;
+        }
+    }
 }
