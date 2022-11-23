@@ -29,7 +29,7 @@ h1 {
 #progress-section {
   margin-top: 70px;
 }
-#progress-section .progress-bar {
+#progress-section #progress-bar {
   width: 50%;
   height: 33px;
   border-radius: 10px;
@@ -37,20 +37,20 @@ h1 {
   margin: 0 auto;
   position: relative;
 }
-#progress-section .progress-bar #current-progress {
-  transition: width ease 5s;
+#progress-section #progress-bar #current-progress {
+  transition: width ease 1s;
   width: 0%;
   height: 100%;
   border-radius: inherit;
   background-color: #2e2e2e;
 }
-#progress-section .progress-bar::before {
+#progress-section #progress-bar::before {
   content: "study";
   position: absolute;
   top: 5px;
   left: -60px;
 }
-#progress-section .progress-bar::after {
+#progress-section #progress-bar::after {
   content: "break";
   position: absolute;
   top: 5px;

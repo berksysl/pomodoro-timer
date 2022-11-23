@@ -5,8 +5,10 @@ const stopButton = document.getElementById("stpbtn");
 const resetButton = document.getElementById("resetbtn");
 const curProgress = document.getElementById("current-progress");
 const appleContainer = document.getElementById("apple-container");
+const progBar = document.getElementById("progress-bar")
+const remainedMinutes = document.getElementById("minutes");
+const remainedSeconds = document.getElementById("seconds");
 
-var pomodoroCount = 0;
 var myInterval;
 /* Getting Current Time and showing in the DOM */
 function ShowTime(){
@@ -21,72 +23,14 @@ function ShowTime(){
     clockTime.textContent = hours + ":" + minutes;
 }
 
-setInterval(ShowTime, 1000);
-
-/* Timer */
-function startTimer(){
-
-        const remainedMinutes = document.getElementById("minutes");
-        const remainedSeconds = document.getElementById("seconds");
-
-        //Converting current text to int
-        let min = parseInt(remainedMinutes.textContent, 10);
-        let sec = parseInt(remainedSeconds.textContent, 10);
-        if(sec == 0 && min == 0){
-            pomodoroCount += 1;
-            newPomodoro(pomodoroCount);
-            reset();
-        }
-        else if(sec === 0){
-            min--;
-            sec = 59
-        }
-        else{
-            sec--;
-        }
-        updateTime(remainedMinutes, remainedSeconds, min, sec);
-        updateProgress(min, sec);
-}
-
-function newPomodoro(pomodoroCount) {
-    for(var i = 0; i < pomodoroCount; i++){
-        let newApple = document.createElement("img");
-        newApple.src = "./tomatovector.svg";
-        appleContainer.append(newApple);
-    }
-}
-
-function updateTime(remainedMinutes, remainedSeconds, min, sec){
-    if(min < 10){
-        min = "0" + min;
-    }
-    if(sec < 10){
-        sec = "0" + sec;
-    }
-    remainedMinutes.textContent = min;
-    remainedSeconds.textContent = sec;
-}
-
-var sec1 = 15;
-function updateProgress(min, sec) {
-    if(sec1 === 15){
-        var widthEl = parseFloat(curProgress.offsetWidth);
-        widthEl+=3;
-        curProgress.style.width = widthEl + "px";
-        sec1 = 1;
-    }
-    else{
-        sec1++;
-    }
-    console.log(sec1);
-}
+setInterval(ShowTime, 10);
 
 function start(){
     stopButton.disabled = false;
     resetButton.disabled = false;
     startButton.disabled = true;
     startTimer();
-    myInterval = setInterval(startTimer, 1000);
+    myInterval = setInterval(startTimer, 10);
 }
 
 function stop(){
@@ -97,13 +41,68 @@ function stop(){
 }
 
 function reset() {
+    clearInterval(myInterval);
     resetButton.disabled = true;
     stopButton.disabled = true;
     startButton.disabled = false;
-    clearInterval(myInterval);
-    const remainedMinutes = document.getElementById("minutes");
-    const remainedSeconds = document.getElementById("seconds");
-    remainedMinutes.textContent = "25"
+    remainedMinutes.textContent = "25";
     remainedSeconds.textContent = "00";
     curProgress.style.width = "0%";
+}
+
+
+/* Timer */
+function startTimer(){
+        //Converting current text to int
+        var min = parseInt(remainedMinutes.textContent, 10);
+        var sec = parseInt(remainedSeconds.textContent, 10);
+        if(sec === 0){
+            min--;
+            sec = 59
+        }
+        else{
+            sec--;
+        }
+        updateTime(min, sec);
+        updateProgress();
+}
+
+function newPomodoro() {
+        let newApple = document.createElement("img");
+        newApple.src = "./tomatovector.svg";
+        appleContainer.append(newApple);
+}
+
+function updateTime(min, sec){
+    if(min == 0 && sec == 0)
+    {
+        min = 25;
+        sec = 0;
+        clearInterval(myInterval);
+        reset();
+        newPomodoro();
+    }
+    if(min < 10){
+        min = "0" + min;
+    }
+    if(sec < 10){
+        sec = "0" + sec;
+    }
+    remainedMinutes.textContent = min;
+    remainedSeconds.textContent = sec;
+}
+
+var sec1 = 60;
+var x = 0;
+var y = 0;
+function updateProgress() {
+    if(sec1 === 60){
+        x = progBar.offsetWidth * 4 / 100;
+        y = curProgress.offsetWidth + x;
+        curProgress.style.width = y + "px";
+        sec1 = 1;
+    }
+    else{
+        sec1++;
+    }
 }
