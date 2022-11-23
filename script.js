@@ -4,6 +4,7 @@ const startButton = document.getElementById("strtbtn");
 const stopButton = document.getElementById("stpbtn");
 const resetButton = document.getElementById("resetbtn");
 const curProgress = document.getElementById("current-progress");
+const appleContainer = document.getElementById("apple-container");
 
 var pomodoroCount = 0;
 var myInterval;
@@ -33,6 +34,7 @@ function startTimer(){
         let sec = parseInt(remainedSeconds.textContent, 10);
         if(sec == 0 && min == 0){
             pomodoroCount += 1;
+            newPomodoro(pomodoroCount);
             reset();
         }
         else if(sec === 0){
@@ -46,6 +48,14 @@ function startTimer(){
         updateProgress(min, sec);
 }
 
+function newPomodoro(pomodoroCount) {
+    for(var i = 0; i < pomodoroCount; i++){
+        let newApple = document.createElement("img");
+        newApple.src = "./tomatovector.svg";
+        appleContainer.append(newApple);
+    }
+}
+
 function updateTime(remainedMinutes, remainedSeconds, min, sec){
     if(min < 10){
         min = "0" + min;
@@ -57,11 +67,18 @@ function updateTime(remainedMinutes, remainedSeconds, min, sec){
     remainedSeconds.textContent = sec;
 }
 
+var sec1 = 15;
 function updateProgress(min, sec) {
-    var elWidth = curProgress.offsetWidth;
-    elWidth+=3;
-    curProgress.style.width = elWidth;
-    console.log(elWidth);
+    if(sec1 === 15){
+        var widthEl = parseFloat(curProgress.offsetWidth);
+        widthEl+=3;
+        curProgress.style.width = widthEl + "px";
+        sec1 = 1;
+    }
+    else{
+        sec1++;
+    }
+    console.log(sec1);
 }
 
 function start(){
@@ -88,4 +105,5 @@ function reset() {
     const remainedSeconds = document.getElementById("seconds");
     remainedMinutes.textContent = "25"
     remainedSeconds.textContent = "00";
+    curProgress.style.width = "0%";
 }
