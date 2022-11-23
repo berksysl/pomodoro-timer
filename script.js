@@ -5,6 +5,7 @@ const stopButton = document.getElementById("stpbtn");
 const resetButton = document.getElementById("resetbtn");
 const curProgress = document.getElementById("current-progress");
 
+var pomodoroCount = 0;
 var myInterval;
 /* Getting Current Time and showing in the DOM */
 function ShowTime(){
@@ -31,6 +32,7 @@ function startTimer(){
         let min = parseInt(remainedMinutes.textContent, 10);
         let sec = parseInt(remainedSeconds.textContent, 10);
         if(sec == 0 && min == 0){
+            pomodoroCount += 1;
             reset();
         }
         else if(sec === 0){
@@ -58,6 +60,8 @@ function updateTime(remainedMinutes, remainedSeconds, min, sec){
 function updateProgress(min, sec) {
     var elWidth = curProgress.offsetWidth;
     elWidth+=3;
+    curProgress.style.width = elWidth;
+    console.log(elWidth);
 }
 
 function start(){
