@@ -47,7 +47,12 @@ function updateTime(remainedMinutes, remainedSeconds, min, sec){
 }
 
 function start(){
+    const startButton = document.getElementById("strtbtn");
+    startButton.disabled = true;
     startTimer();
     setInterval(startTimer, 1000);
 }
 
+function stop(){
+    
+}

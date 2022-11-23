@@ -124,6 +124,11 @@ h1 {
                 background-color: map-get($colors, green);
                 scale: 1.03;
             }
+            &:disabled {
+                background-color: map-get($colors, green);
+                scale: 0.95;
+                cursor: default;
+            }
         }
 
         &:nth-child(2) {
@@ -131,6 +136,11 @@ h1 {
             &:hover {
                 background-color: map-get($colors, red);
                 scale: 1.03;
+            }
+            &:disabled {
+                background-color: map-get($colors, green);
+                scale: 0.95;
+                cursor: default;
             }
         }
 
@@ -140,6 +150,12 @@ h1 {
                 background-color: map-get($colors, cyan);
                 scale: 1.03;
             }
+            &:disabled {
+                background-color: map-get($colors, green);
+                scale: 0.95;
+                cursor: default;
+            }
+
         }
 
     }
