@@ -149,13 +149,13 @@ h1 {
     margin: 0 auto;
     overflow-x: hidden;
   }
-  .progress-bar {
+  #progress-bar {
     width: 100% !important;
   }
-  .progress-bar::after {
+  #progress-bar::after {
     display: none;
   }
-  .progress-bar::before {
+  #progress-bar::before {
     display: none;
   }
   #timer-section {

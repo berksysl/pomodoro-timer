@@ -173,7 +173,7 @@ h1 {
         margin: 0 auto;
         overflow-x: hidden;
     }
-    .progress-bar {
+    #progress-bar {
         width: 100% !important;
         &::after{
             display: none;
