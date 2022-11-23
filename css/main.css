@@ -58,9 +58,18 @@ h1 {
 
 #timer-section {
   margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#timer-section #time-box {
   font-family: "Rubik", sans-serif;
   font-size: 160px;
   letter-spacing: 5px;
+  display: flex;
+  flex-wrap: nowrap;
+  width: 450px;
+  text-align: center;
 }
 
 #pomodoro-section {
@@ -135,7 +144,10 @@ h1 {
   }
   #timer-section {
     margin-top: 70px;
+  }
+  #timer-section #time-box {
     font-size: 100px;
+    width: 295px;
   }
   #buttons-section {
     flex-direction: column;
