@@ -47,6 +47,7 @@ function updateTime(remainedMinutes, remainedSeconds, min, sec){
 }
 
 function start(){
+    startTimer();
     setInterval(startTimer, 1000);
 }
 
