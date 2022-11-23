@@ -92,13 +92,16 @@ function updateTime(min, sec){
     remainedSeconds.textContent = sec;
 }
 
-var sec1 = 15;
+var sec1 = 14;
 var x = 1;
 function updateProgress() {
     if(sec1 === 15){
         curProgress.style.width = x + "%";
         x++;
         sec1 = 1;
+        if(x==101){
+            x=1;
+        }
     }
     else{
         sec1++
