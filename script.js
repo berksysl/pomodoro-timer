@@ -3,6 +3,7 @@ const clockTime = document.getElementById("clock-time");
 const startButton = document.getElementById("strtbtn");
 const stopButton = document.getElementById("stpbtn");
 const resetButton = document.getElementById("resetbtn");
+const curProgress = document.getElementById("current-progress");
 
 var myInterval;
 /* Getting Current Time and showing in the DOM */
@@ -29,8 +30,10 @@ function startTimer(){
         //Converting current text to int
         let min = parseInt(remainedMinutes.textContent, 10);
         let sec = parseInt(remainedSeconds.textContent, 10);
-        
-        if(sec === 0){
+        if(sec == 0 && min == 0){
+            reset();
+        }
+        else if(sec === 0){
             min--;
             sec = 59
         }
@@ -38,6 +41,7 @@ function startTimer(){
             sec--;
         }
         updateTime(remainedMinutes, remainedSeconds, min, sec);
+        updateProgress(min, sec);
 }
 
 function updateTime(remainedMinutes, remainedSeconds, min, sec){
@@ -51,7 +55,10 @@ function updateTime(remainedMinutes, remainedSeconds, min, sec){
     remainedSeconds.textContent = sec;
 }
 
-
+function updateProgress(min, sec) {
+    var elWidth = curProgress.offsetWidth;
+    elWidth+=3;
+}
 
 function start(){
     stopButton.disabled = false;
