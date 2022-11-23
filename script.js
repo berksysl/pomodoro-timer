@@ -23,14 +23,14 @@ function ShowTime(){
     clockTime.textContent = hours + ":" + minutes;
 }
 
-setInterval(ShowTime, 10);
+setInterval(ShowTime, 1000);
 
 function start(){
     stopButton.disabled = false;
     resetButton.disabled = false;
     startButton.disabled = true;
     startTimer();
-    myInterval = setInterval(startTimer, 10);
+    myInterval = setInterval(startTimer, 1000);
 }
 
 function stop(){
