@@ -92,7 +92,7 @@ function updateTime(min, sec){
     remainedSeconds.textContent = sec;
 }
 
-var sec1 = 14;
+var sec1 = 1;
 var x = 1;
 function updateProgress() {
     if(sec1 === 15){
