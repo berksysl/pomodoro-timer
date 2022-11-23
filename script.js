@@ -1,6 +1,10 @@
 /*DOM ELEMENTS*/
 const clockTime = document.getElementById("clock-time");
+const startButton = document.getElementById("strtbtn");
+const stopButton = document.getElementById("stpbtn");
+const resetButton = document.getElementById("resetbtn");
 
+var myInterval;
 /* Getting Current Time and showing in the DOM */
 function ShowTime(){
     var time = new Date();
@@ -47,10 +51,7 @@ function updateTime(remainedMinutes, remainedSeconds, min, sec){
     remainedSeconds.textContent = sec;
 }
 
-var myInterval;
-const startButton = document.getElementById("strtbtn");
-const stopButton = document.getElementById("stpbtn");
-const resetButton = document.getElementById("resetbtn");
+
 
 function start(){
     stopButton.disabled = false;
@@ -65,4 +66,15 @@ function stop(){
     stopButton.disabled = true;
     startButton.disabled = false;
     clearInterval(myInterval);
+}
+
+function reset() {
+    resetButton.disabled = true;
+    stopButton.disabled = true;
+    startButton.disabled = false;
+    clearInterval(myInterval);
+    const remainedMinutes = document.getElementById("minutes");
+    const remainedSeconds = document.getElementById("seconds");
+    remainedMinutes.textContent = "25"
+    remainedSeconds.textContent = "00";
 }
