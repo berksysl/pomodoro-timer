@@ -18,21 +18,22 @@ setInterval(ShowTime, 1000);
 
 /* Timer */
 function startTimer(){
-    const remainedMinutes = document.getElementById("minutes");
-    const remainedSeconds = document.getElementById("seconds");
 
-    //Converting current text to int
-    let min = parseInt(remainedMinutes.textContent, 10);
-    let sec = parseInt(remainedSeconds.textContent, 10);
-    
-    if(sec === 0){
-        min--;
-        sec = 59
-    }
-    else{
-        sec--;
-    }
-    updateTime(remainedMinutes, remainedSeconds, min, sec);
+        const remainedMinutes = document.getElementById("minutes");
+        const remainedSeconds = document.getElementById("seconds");
+
+        //Converting current text to int
+        let min = parseInt(remainedMinutes.textContent, 10);
+        let sec = parseInt(remainedSeconds.textContent, 10);
+        
+        if(sec === 0){
+            min--;
+            sec = 59
+        }
+        else{
+            sec--;
+        }
+        updateTime(remainedMinutes, remainedSeconds, min, sec);
 }
 
 function updateTime(remainedMinutes, remainedSeconds, min, sec){
@@ -46,13 +47,22 @@ function updateTime(remainedMinutes, remainedSeconds, min, sec){
     remainedSeconds.textContent = sec;
 }
 
+var myInterval;
+const startButton = document.getElementById("strtbtn");
+const stopButton = document.getElementById("stpbtn");
+const resetButton = document.getElementById("resetbtn");
+
 function start(){
-    const startButton = document.getElementById("strtbtn");
+    stopButton.disabled = false;
+    resetButton.disabled = false;
     startButton.disabled = true;
     startTimer();
-    setInterval(startTimer, 1000);
+    myInterval = setInterval(startTimer, 1000);
 }
 
 function stop(){
-    
+    resetButton.disabled = false;
+    stopButton.disabled = true;
+    startButton.disabled = false;
+    clearInterval(myInterval);
 }

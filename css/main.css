@@ -121,7 +121,7 @@ h1 {
   scale: 1.03;
 }
 #buttons-section button:nth-child(2):disabled {
-  background-color: #47D380;
+  background-color: #EB3A3A;
   scale: 0.95;
   cursor: default;
 }
@@ -133,7 +133,7 @@ h1 {
   scale: 1.03;
 }
 #buttons-section button:nth-child(3):disabled {
-  background-color: #47D380;
+  background-color: #41CDE0;
   scale: 0.95;
   cursor: default;
 }

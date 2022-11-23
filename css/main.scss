@@ -138,7 +138,7 @@ h1 {
                 scale: 1.03;
             }
             &:disabled {
-                background-color: map-get($colors, green);
+                background-color: map-get($colors, red);
                 scale: 0.95;
                 cursor: default;
             }
@@ -151,7 +151,7 @@ h1 {
                 scale: 1.03;
             }
             &:disabled {
-                background-color: map-get($colors, green);
+                background-color: map-get($colors, cyan);
                 scale: 0.95;
                 cursor: default;
             }
