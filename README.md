@@ -1,6 +1,6 @@
 <h1>Pomodoro Timer</h1>
 <h3>Preview</h3>
-<a href="https://berksysl.github.io/Pomodoro-timer/>Live preview</a>
+<a href="https://berksysl.github.io/pomodoro-timer"/>Live preview</a>
 <h3>Wireframe</h3>
 <span>I have created with figma</span>
 
